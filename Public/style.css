@@ -1,1 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    color:white;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    display:grid;
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.status{
+    width:180px;
+    margin:20px auto;
+    text-align:center;
+    padding:12px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.safe{
+    background:#22c55e;
+}
+
+.warning{
+    background:#f59e0b;
+}
+
+.danger{
+    background:#ef4444;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+
+50%{
+opacity:.45;
+}
+
+}
+
+.reading{
+    text-align:center;
+    margin:25px 0;
+}
+
+.value{
+    font-size:70px;
+    font-weight:bold;
+}
+
+.unit{
+    opacity:.8;
+    font-size:18px;
+}
+
+.progress{
+    width:100%;
+    height:22px;
+    border-radius:30px;
+    background:#1e293b;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+#progressBar{
+    height:100%;
+    width:0%;
+    background:#22c55e;
+    transition:.4s;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.infoBox{
+    background:rgba(255,255,255,.06);
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+}
+
+.infoBox span{
+    display:block;
+    opacity:.7;
+    margin-bottom:8px;
+}
+
+.infoBox strong{
+    font-size:18px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    margin-bottom:15px;
+    font-size:17px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#3b82f6;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+canvas{
+    margin-top:20px;
+}
+
+@media(max-width:700px){
+
+.info{
+grid-template-columns:1fr;
+}
+
+.value{
+font-size:55px;
+}
+
+h1{
+font-size:1.6rem;
+}
+
+}
