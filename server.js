@@ -186,3 +186,31 @@ app.post("/threshold", (req, res) => {
     });
 
 });
+// ===============================
+// Unknown Routes
+// ===============================
+
+app.use((req, res) => {
+
+    res.status(404).json({
+
+        success: false,
+        message: "Endpoint Not Found"
+
+    });
+
+});
+
+
+// ===============================
+// Start Server
+// ===============================
+
+app.listen(PORT, () => {
+
+    console.log("=================================");
+    console.log("🚨 Smart Smoke Detector Started");
+    console.log("Server running on Port :", PORT);
+    console.log("=================================");
+
+});
