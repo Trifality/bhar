@@ -92,3 +92,97 @@ app.get("/api/status", (req, res) => {
     });
 
 });
+// ===============================
+// Receive Smoke Reading from ESP32
+// ===============================
+
+app.post("/sensor", (req, res) => {
+
+    const smoke = Number(req.body.smoke);
+
+    if (isNaN(smoke)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid smoke value"
+        });
+    }
+
+    smokeValue = smoke;
+
+    lastSeen = Date.now();
+
+    updateStatus();
+
+    addHistory(smokeValue);
+
+    res.json({
+        success: true,
+        smoke: smokeValue,
+        status: status
+    });
+
+});
+
+
+// ===============================
+// Get Threshold
+// ESP32 calls this
+// ===============================
+
+app.get("/threshold", (req, res) => {
+
+    res.json({
+
+        threshold: threshold
+
+    });
+
+});
+
+
+// ===============================
+// Update Threshold
+// Website calls this
+// ===============================
+
+app.post("/threshold", (req, res) => {
+
+    const password = req.body.password;
+    const newThreshold = Number(req.body.threshold);
+
+    if (password !== ADMIN_PASSWORD) {
+
+        return res.status(401).json({
+
+            success: false,
+            message: "Wrong Password"
+
+        });
+
+    }
+
+    if (isNaN(newThreshold) || newThreshold < 100) {
+
+        return res.status(400).json({
+
+            success: false,
+            message: "Invalid Threshold"
+
+        });
+
+    }
+
+    threshold = newThreshold;
+
+    updateStatus();
+
+    res.json({
+
+        success: true,
+        message: "Threshold Updated",
+
+        threshold: threshold
+
+    });
+
+});
