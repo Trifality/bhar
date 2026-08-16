@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Smoke Detector</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🚨 Smart Smoke Detector</h1>
+
+        <div id="status" class="status safe">
+            SAFE
+        </div>
+
+        <div class="reading">
+
+            <div class="value" id="smokeValue">
+                0
+            </div>
+
+            <div class="unit">
+                Smoke Reading
+            </div>
+
+        </div>
+
+        <div class="gauge">
+
+            <div class="progress">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <div class="infoBox">
+
+                <span>Threshold</span>
+
+                <strong id="threshold">
+                    1800
+                </strong>
+
+            </div>
+
+            <div class="infoBox">
+
+                <span>ESP32</span>
+
+                <strong id="deviceStatus">
+                    Offline
+                </strong>
+
+            </div>
+
+            <div class="infoBox">
+
+                <span>Updated</span>
+
+                <strong id="lastUpdate">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Smoke History</h2>
+
+        <canvas id="historyChart"></canvas>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🔒 Admin Settings</h2>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Admin Password">
+
+        <input
+            id="newThreshold"
+            type="number"
+            placeholder="Threshold">
+
+        <button id="updateBtn">
+            Update Threshold
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+                  </html>
